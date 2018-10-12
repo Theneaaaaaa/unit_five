@@ -7,3 +7,4 @@ for x in range(1, 10000):
 
 
 print(total_sum)
+# 16668333 is my answer
