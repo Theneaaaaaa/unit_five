@@ -21,6 +21,20 @@ def re_roll():
     return number
 
 
+def roll_point(point):
+    dice1 = roll_the_dice()
+    dice2 = roll_the_dice()
+    dice_total = dice1 + dice2
+    while dice_total != 7 or dice_total != point:
+        dice1 = roll_the_dice()
+        dice2 = roll_the_dice()
+        dice_total = dice1 + dice2
+    if dice_total == point:
+        return 1
+    elif dice_total == 7:
+        return 0
+
+
 def judgement():
     dice1 = roll_the_dice()
     dice2 = roll_the_dice()
@@ -29,18 +43,11 @@ def judgement():
     if dice_total == 7 or 11:
         win_time = win_time + 1
     elif dice_total == 2 or 3 or 12:
-        pass
+        win_time = win_time + 0
     else:
-        dice3 = re_roll()
-        dice4 = re_roll()
-        dice_total2 = dice3 + dice4
-        for x in range(time_to_simulate):
-            re_roll()
-            if dice_total2 == dice_total:
-                win_time = win_time + 1
-            elif dice_total2 == 7:
-                pass
-            else:
+        win_time = win_time + roll_point(dice_total)
+
+
 
 
 
